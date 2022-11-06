@@ -17,6 +17,8 @@ This repo contains the following software + credits to:
 - "lame" audio converter from LAME project team (https://lame.sourceforge.io/developers.php)
 - "fmod" software pieces from "Firelight Technologies" team (https://www.fmod.com/)
 - "ffmpeg" by.....uh....."FFmpeg team" (https://ffmpeg.org/about.html)
+- the reconstruction of the .fdp files by "HotPocketRemix"
 
 I hold NO copyrights whatsoever.
-If you want me to remove your software from this repo please contact me on Github.
+If you want me to remove your software from this repo
+please contact me via mail: JeNoVaViRuS@outlook.de
