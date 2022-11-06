@@ -26,9 +26,9 @@ So you might wonder where to find sounds that aren't dialogues? No? Just want to
 ################################################################################# Preparation for dialogue ##################################################################################
 
 1. pick some distinctive part from a dialogue of the npc (not "Good-bye, then." , better: "Here, have you met that sunbathing Solaire?")
-2. use "DS Map Studio" and go to "text" editor -> "TalkMsg" and search for your dialogue. Note down the ID
-3. use "DS Map Studio" and go to "param" editor -> "TalkParam" and search for this ID. Note down the voiceID (text and voice ID can actually differ)
-4. run "#search for voice lines.bat" and enter the voiceID you found. It will spit out all .fdp files it find that contain it. Note them down
+2. use "DS Map Studio" and go to "Text editor" -> "TalkMsg" and search for your dialogue. Note down the ID
+3. use "DS Map Studio" and go to "Param editor" -> "TalkParam" and search for this ID. Note down the voiceID (text and voice ID can actually differ)
+4. run "#search for voice lines.bat" and enter the voiceID you found. It will spit out all .fdp files that contain it. Note them down
 
 ####################################################################################### How to use ##########################################################################################
 
