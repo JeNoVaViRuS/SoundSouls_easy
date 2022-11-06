@@ -1,15 +1,15 @@
-#you can change the sound bank extract folder here for tests. You need to set it in the next lines for the rm command. Don't mess up.
+#you can change the sound bank extract folder here for tests
 $soundfolder="bank"
 $fdpLog = "fdp.log"
 
-#clear the folders
-#the $soundfolder var is not used here because it deletes the whole folder if it is empty or /
-#Remove-Item -Recurse -Path bank | Out-Null
-#Remove-Item -Recurse -Path additional_sound\ | Out-Null
-#Remove-Item -Recurse -Path currentSoundBones\ | Out-Null
-#Remove-Item -Recurse -Path Build\ | Out-Null
-#out-null didn't work for Remove-Item file!? so New-Item with Force, gg ez. Hey, as long as it works...
+#clean fdp log file
 New-Item -Path $fdpLog -Value "" -Force | Out-Null
+
+#delete the folders
+Remove-Item "$soundfolder" -Force -Recurse | Out-Null
+Remove-Item "additional_sound" -Force -Recurse | Out-Null
+Remove-Item "currentSoundBones" -Force -Recurse | Out-Null
+Remove-Item "Build" -Force -Recurse | Out-Null
 
 #create folders
 New-Item -Path $soundfolder -ItemType Directory -Force | Out-Null
@@ -33,7 +33,8 @@ Set-Content -Path $pathfile -Value $DSPathInFile
 
 #let the user enter a folder 
 do {
-$DSlocation = Read-Host -Prompt 'Enter your Dark Souls folder location if it differs otherwise leave empty then press Enter'
+Write-Host "Enter your Dark Souls folder location if it differs otherwise leave empty then press Enter."
+$DSlocation = Read-Host -Prompt 'You can copy the path then right-click into this window to paste it here'
 
 #check if the user entered nothing or something
 If ($DSlocation)
@@ -88,7 +89,7 @@ FsbExtractor\FsbExtractor.exe /C /O:$bankfrpgFolder $fsbPath | Out-Null
 #rename all files to be without .wav
 dir $bankfrpgFolder | rename-item -NewName {$_.name -replace ".wav",""}
 
-#this part is apparently not needed cause you only need to build the original file and not the additonally mentioned files *cries*
+#this part is apparently not needed cause you only need to build the original file and not the additonally mentioned files in the .fdp *cries*
 <#for each frpg or fdlc mentined, loop through the file
 foreach ($frpg in (Select-String "<filename>bank/f" $fdpPath))
 {
