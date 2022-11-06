@@ -1,15 +1,15 @@
-######################################## Information ########################################
+#################################### Information ####################################
 
 This is a fork for easy usage. Original project is: https://github.com/LoVals/SoundSouls
 Special thanks to LoVals / Exiark. This wouldn't have been possible without your help.
 
-##################################### Download and Usage ####################################
+################################# Download and Usage ################################
 
 Download from here: https://github.com/JeNoVaViRuS/SoundSouls_easy/releases
 
 Read the "USAGE.md" file to use the project.
 
-########################################## Credits ##########################################
+###################################### Credits ######################################
 
 This repo contains the following software + credits to:
 - original repo from "LoVals" / "Exiark" (https://github.com/LoVals)
