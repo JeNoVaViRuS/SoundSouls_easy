@@ -1,0 +1,168 @@
+FSB Extractor Changes | 2016 Oct 21
+-----------------------------------
+- The "Set Offset" action was changed to "Scan from Offset". Before a header had to be exactly at the given offset, or it would fail, now it will begin a search from the given offset.
+- Header size of the opened FSB file is now specified in the statusbar. The other header size refers to the combined header size of all samples.
+- Fixed an issue with writing sample data in rare cases where not all the data could be read. Previously, invalid data could be written.
+- FSB5: With verbose logging on, the file data offset and size of a sample's extra properties are now reported.
+- Sample Tab: Sample attributes are now aligned to make things a little easier to read.
+- Improved the error message for failing to open an FSB file, to also mention that the file content may be encrypted.
+- Added a column sort indicator glyph for both listviews.
+- Replaced several icons, including the main icon.
+- Double-clicking on the directory listing path header, will allow you to edit the current path.
+- Fixed loading of FSB5 samples without nametable.
+- FSB5: Samples without an extra freqency header now properly take their freqency value from the mode/flags value.
+- Added warning on the Sample tab for multichannel samples. That is samples which have more than 2 (stereo) audio channel.
+- Reworked the entire configuration system. This unfortunately means that previous settings from an older version no longer works.
+- Moved the "Entries" menu items to a new right-click popupmenu for the listview.
+- Added a "Copy Sample Names" to the right-click menu. It will copy the names of selected samples to the clipboard, respecting the current sort order.
+
+FSB Extractor Changes | 2014 Mar 10
+-----------------------------------
+- Fixed some IO errors that could occur in cases of bad FSB files. This was especially noticeable in the directory listing.
+- FSB5 Samples stored in Celt (12) format is now detected as Ogg Vorbis instead of unknown.
+- The INI settings file is no longer just named "config.ini", but will have the same name of the main EXE file, but with an INI extension. So if the EXE file is renamed, it will use a different INI file.
+- The directory listing now shows all sub-directories in addition to FSB files.
+- Listview columns headers are now loaded dynamically, depending on which columns are needed for the given FSB version.
+- Added detection for XMA samples.
+- There is now an option to allow only one instance of the program to run. If you have FSB files associated with the program, it will open it in the instance that already exists.
+- Fixed some data offset issues for certain FSB5 samples, which made the extracted files unable to be played.
+- Corrected the bits used to read the FSB5 sample's extra type (8 to 7 msb) and size (23 to 24).
+- The default path used to save the extracted samples was changed to "%TEMP%\FSB Extractor\". This path can be changed in the INI file.
+- New feature to scan for sub-FSB-files [F8] within the current file. This makes it possible to find FSB files that are stored within larger container files, as seen in some games.
+- New command line slash command "/S". This can be used to toggle deep scan when doing command line extraction. It will then scan for sub-FSB-files within the main file. Use the parameters "/S[0|1]" to toggle.
+- Removed a few keyboard shortcuts for the options menu.
+- Made it possible to clear the Sound Bank log [Ctrl+B], just like it was possible to clear the Extraction log [Ctrl+E].
+- Fixed a rare error that could happen with the MP3 Frame Verifier on. If a valid frame was found near the end of the sample data buffer, it would read past the end of the buffer.
+- Because file handles now remain open even after FSB headers and samples have been read, it is now possible to close the current file [Ctrl+W].
+- Fixed the WAVE header of ADPCM files having their "bitsPerSample" written as 5 instead of 4.
+
+FSB Extractor Changes | 2013 Jul 23
+-----------------------------------
+- Fixed sample sorting by duration, which got broken in the last release.
+- The Directory Listing is now still updated, even if the file opened was invalid and failed.
+- Fixed sorting error for certain columns in the main sample listview.
+- Fixed sorting error on the directory listing tab.
+- Added notice for Ogg samples that they are headerless and unplayable after extraction.
+- Sample names of FSB files with basic headers, will now continue the numbering of the first sample's name if possible, otherwise they just start from zero.
+
+FSB Extractor Changes | 2013 Mar 09
+-----------------------------------
+- Now supports FSB files with basic sample headers.
+- The column previously named "Length" has been renamed to "Duration" to make it more clear what it means.
+- Sample duration is now shown without unused time units. E.g. a sample with the duration less than a minute, will not show minutes as being zero.
+- The path of the directory listing is now shown in a header.
+- It's now possible to go to the parent directory from the directory listing tab.
+- Added option to open the extraction folder under the Show menu. Shortcut is [F12].
+- New option to show or hide the log tabs at the bottom.
+- When trying to open an invalid FSB file, the first 4 bytes or "FileID" is shown in parentheses.
+
+FSB Extractor Changes | 2013 Feb 11
+-----------------------------------
+- When writing a WAVE header for any non PCM format, a "fact" chunk is now written into the RIFF.
+- Odd length sample data is now padded with an extra byte in the RIFF header.
+- Proper sample mode flags are now used for FSB3 and FSB4 files.
+- If the program is opened without any parameters, the directory listing will now show the content of the last opened file.
+- It is now possible to set the extraction path by editing the INI file. By default the "Dumps" directory in the program folder is used.
+
+FSB Extractor Changes | 2013 Jan 13
+-----------------------------------
+- Fixed an error that could happen at times when you would drag and drop an FSB file into the program to open it.
+- Corrected a display error when reporting the ID of an unknown sample extra type.
+- Fixed detection of MP3 sample data in FSB3 and FSB4 files. Was being detected as PCM due to an error.
+- FSB5 sample format is now properly detected from the header sample format ID.
+- Ogg Vorbis sample format is now supported. This format is displayed as a yellow icon.
+- No longer adds a file extension, when the extracted filename has a valid one already.
+- Fixed command line log saving having many duplicate log entries when more than one FSB file were handled. Was caused by the log not being cleared between each file open.
+- Added command line switch to enable or disable verbose logging. The command is "/V[0|1]". See "readme.txt" for more information.
+- Message box errors will no longer annoyingly be displayed while extracting files from console mode.
+
+FSB Extractor Changes | 2013 Jan 04
+-----------------------------------
+- Better descriptions of the various sample flags.
+- Added Directory Listing tab at the bottom. This will list all the FSB files in the same directory as the currently opened one. Quite useful for jumping between files of the same game.
+- Reworked a few of the stored variables, so if you're upgrading a previous release, some minor settings will be reset.
+- If an FSB file has multiple entries with the same sample name, they will be tagged with (2), (3) etc to avoid conflict.
+- The bottom logs and directory listing tabs now display how many entries they each contain.
+- It is now possible to specify more than just one FSB file in the command line.
+- Fixed a couple of errors that could occur when the log lists were being cleared and populated.
+
+FSB Extractor Changes | 2012 Dec 20
+-----------------------------------
+- Greatly increased the usefulness of the log by splitting it into "Sound Bank", "Sample" and "Extraction" specific details.
+- Added a verbose mode option, which is on by default. It will cause more details to be reported to the different logs during the opening and extraction process.
+- Log font changed from Courier New to default system font. This can be customised from the "config.ini" file if desired.
+- Added support for command line parameters, use "/?" or see help file for specifics. Let me know if there are more commands that would be useful.
+
+FSB Extractor Changes | 2012 Jul 03
+-----------------------------------
+- Improved FSB5 file handling. Now extra sample parameters are properly loaded, such as loop data. This also fixed the issue in previous versions where FSB5 files with more than one extra were not read properly.
+- Greatly improved MP3 sample detection.
+- Chosen sound app is now saved between sessions.
+- The right side log listbox, now remembers its width between sessions.
+- Will now write the correct wave header tag (3) for floating point sample data.
+- No longer writes WAVE header for samples in MP3 format, no matter what the "Add Wave Header" setting is. There really was no point in doing that.
+- Selecting or deselcting many samples at once should no longer slow down responsiveness due to log listbox updates.
+- Corrected the calculation for the last sample data size of FSB5 files. It failed to adjust for FSB header sizes.
+
+FSB Extractor Changes | 2012 Jun 29
+-----------------------------------
+- Fixed how a few of the options failed to get saved between sessions.
+- Now uses a modern style open file dialog.
+- The sample time duration now shows milliseconds as well. Invalid entries shows nothing at all.
+- If column widths are changed, they are now remembered between sessions.
+- Added an "MP3 Frame Verification" option. A full explanation of this option be found in the readme file. Samples extracted from "League of Legends" requires this option to play.
+- Will now properly use the system font for the listview and statusbar instead of always using "Tahoma".
+
+FSB Extractor Changes | 2012 Jun 26
+-----------------------------------
+- Pressing enter on an entry will now properly use the chosen sound player app.
+- Default colors for background and text now loads from windows preference.
+- New column showing the format type of the sample. Format 17 is ADPCM, 85 is MP3 and 1 is just raw PCM.
+- Can now detect MP3 files whose headers doesn't start until offset 0x20.
+- WAVE headers are now written for MP3, when the option to do so is enabled.
+- Added option to append file extension to the extracted file. The extension is determined by the sample format.
+- Made an option to toggle the use of the selected player app. It's more useful to use proper file association, now that file extensions can be automatically added.
+- Fixed a "BitsPerSample" rounding error when writing WAVE headers. This could in some cases cause the extracted file to be unplayable in most players.
+- Added icons to each sample which are determined by the sample format. Unknown/invalid = black; PCM = green; ADPCM = teal; MP3 = red.
+
+FSB Extractor Changes | 2012 Jun 15
+-----------------------------------
+- Added menu item to extract entry and run. Shortcut key is F3. This is the same action as when double clicking an entry.
+- Added menu item to extract entries to a specific folder. Shortcut key is F6.
+- New option to select the sound player app from within the program. No need to fiddle with the .ini file as before.
+- Program can now be closed with Ctrl + W.
+- Few minor tweaks.
+
+FSB Extractor Changes | 2012 Jun 03
+-----------------------------------
+- The FSB5 format is now supported. There may be bugs with it however.
+- Will now properly extract files from aligned FSB files.
+- Fixed a range-check error that could occur for high "Mode" values.
+- Colors in the ini are now saved as hex values.
+- Entries with the "FSOUND_MPEGHALFRATE" flag, will now have an asterisk next to the number in the "Mode" column. This should make it easy to see which can be played and which cannot.
+- Added column to display the entry's length in minutes:seconds.
+- Changed the program icon to something more apt.
+- About dialog is now model to the main window.
+
+FSB Extractor Changes | 2010 Apr 14
+-----------------------------------
+- Renamed the program to "FSB Extractor" as its functionality isn't limited to Dragon Age.
+- Included XP Manifest to support the use of Visual Styles.
+- Added option to add and save wave headers when extracting data.
+- Now stores a few settings in a file named "config.ini".
+- Can now open a filename given by the command line.
+- Added two new column headers, Samples (number of samples) and BPS (bits per sample).
+- IMA ADPCM audio format can now be extracted and played. You will most likely need a player like VLC Media Player to play them though.
+- Sidebar added which shows the different modes flagged for the selected file.
+
+Dragon Age Extractor Changes | 2009 Nov 28
+------------------------------------------
+- Added sorting of entries. Default sort is by Index, the order as they appear in the file.
+- It is now possible to select multiple entries, and extract them all from the "Entries" menu.
+- Now shows the sample frequenzy (Hz) and number of channels for entries without having to enable advanced columns.
+- No longer locks up when trying to open a non FSB file.
+- Drag and Drop of files are now supported.
+
+Dragon Age Extractor Changes | 2009 Nov 24
+------------------------------------------
+- First Release.

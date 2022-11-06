@@ -1,0 +1,3 @@
+@echo off
+::this file was once almost done but since batch is garbage I couldn't finish it with enough user comfort so it's all in this file...
+powershell.exe -ExecutionPolicy Bypass -File powershell\extract_fsb.ps1
