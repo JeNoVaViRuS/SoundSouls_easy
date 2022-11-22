@@ -10,7 +10,6 @@ foreach ($filename in (Select-String "<filename>bank/f" $fdpPath))
 
 	#if the second part of the string isn't the .wav file then it's a folder so create folder and move it there
 	If ($filenameArray[2] -notlike "*.wav*") {
-		Write-Host $filenameArray[2] like .wav
 		
 		$filenameSubFolder = "bank\" + $soundfdp + "\" + $filenameArray[2]
 		#create folder if it doesn't exist

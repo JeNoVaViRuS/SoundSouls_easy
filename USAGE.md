@@ -46,18 +46,18 @@ How to use (read the text that pops up in the cmd windows closely):
 	
 2. run "#2 Convert all to wav.bat" to convert all the ".mp3" files into ".wav" files
 3. run "#3 sort sound files.bat" so it automatically sorts all files into folder according to the .fdp project structure. If you only wanted to replace a soundfile then skip to 5.
-	3.1 your file is now in the bank\frpg... folder. You can put it into a fitting folder (not needed) e.g.: filename was "v023000100.wav" then put it into the folder "v023".
+	3.1 your file is now in the bank\frpg... folder. You can put it into a fitting folder that begins with the first 3 numbers (not needed) e.g.: filename was "v023000100.wav" then put it into the folder "v023".
 	
 4. run "#4 Open the fdp with FMOD.bat"
 	First complete all steps for only one event/sound. Then do it again for the next sound so you avoid mistakes.
 	4.1 In the "events" tab you should look for the event that's the last voiceID of your dialogue you want to extend
 	4.2 right-click that event and click "copy", then right-click again right there and click "paste"
-	4.3 now you have it as a duplicate. In the middle lower part of the screen you need to edit the "value" for the "Name" property. DON'T select another event. Keep this new one selected.
-	4.4 go to the "Sound definitions" tab
-	4.5 right-click somewhere in the left side of the list
-	4.6 go to the "Event editor" tab
-	4.7 right-click in the free space in the lower middle and select "Replace sound..."
-	4.8 select your created "Sound definition" and press "OK"
+	4.3 Now you have it as a duplicate. In the middle lower part of the screen you need to edit the "value" for the "Name" property and press Enter. 
+	4.4 Now left click on it on the left side again. DON'T select another event. Keep this new one selected. Go to the "Sound definitions" tab
+	4.5 right-click somewhere in the left side of the list, select "Add sound definition(s) from wavetables..." and select the file you added
+	4.6 go to the "Event editor" tab. If you did 4.3 and 4.4 right then there should be the name of your new sound at the top
+	4.7 right-click in the free space in the middle (where the name is behind the red lines) and select "Replace sound..."
+	4.8 select your "Sound definition" you just created and press "OK"
 	4.9 Now repeat for other sounds or save the project: File -> Save Project (or Strg+S) and exit
 	
 5. run "#5 build fev and fsb.bat" and the files are now in the "Build" folder
